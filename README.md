@@ -12,13 +12,12 @@ Ce dépot contient une documentation Mkdocs vierge préconfigurée (thème, late
 ## Installation
 
 ```
-python -m venv .venv
-chmod +x ./.venv/bin/activate
-source ./.venv/bin/activate
-pip install -r requirements.txt
+./install.sh
 ```
 
 ## Visualisation de la doc
 
-python -m mkdocs serve
+```
+./run.sh
+```
 
