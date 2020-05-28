@@ -21,3 +21,6 @@ pip install -r requirements.txt
 python -m mkdocs serve
 ```
 
+La documentation sera visible dans un navigateur à l'adresse
+[http://127.0.0.1:8080](http://127.0.0.1:8080)
+
