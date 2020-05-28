@@ -6,13 +6,12 @@ Ce dépot contient une documentation Mkdocs vierge préconfigurée (thème, late
 
 ## Pré-requis
 
-- python
-- pip
+- python (3.3+)
+- [pip](https://pypi.org/)
 
 ## Installation
 
 ```
-pip install --upgrade venv
 python -m venv .venv
 chmod +x ./.venv/bin/activate
 source ./.venv/bin/activate
