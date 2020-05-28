@@ -45,7 +45,8 @@ plugins:
       prebuild_index: true
       lang:
         - fr
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      type: date
   - awesome-pages:
       collapse_single_pages: true
   - minify:
