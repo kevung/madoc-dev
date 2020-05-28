@@ -1,4 +1,3 @@
-wheel
 mkdocs-material
 mkdocs-awesome-pages-plugin
 mkdocs-minify-plugin
