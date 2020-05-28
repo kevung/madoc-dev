@@ -12,12 +12,12 @@ Ce dépot contient une documentation Mkdocs vierge préconfigurée (thème, late
 ## Installation
 
 ```
-./install.sh
+pip install -r requirements.txt
 ```
 
 ## Visualisation de la doc
 
 ```
-./run.sh
+python -m mkdocs serve
 ```
 
