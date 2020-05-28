@@ -1,0 +1,55 @@
+site_name: Ma doc
+
+theme:
+  name: material
+  font: false
+  language: 'fr'
+  feature:
+    tabs: true
+  palette:
+    scheme: default
+    primary: 'blue grey'
+    accent: 'deep orange'
+
+markdown_extensions:
+  - footnotes
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+
+plugins:
+  - search:
+      prebuild_index: true
+      lang:
+        - fr
+  - awesome-pages:
+      collapse_single_pages: true
+  - minify:
+      minify_html: true
+
+use_directory_urls: false
+nav:
+  - Accueil: index.md
