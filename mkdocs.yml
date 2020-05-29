@@ -42,7 +42,6 @@ extra_javascript:
 
 plugins:
   - search:
-      prebuild_index: true
       lang:
         - fr
   - git-revision-date-localized:
