@@ -30,6 +30,7 @@ steps:
   image: alpine
   commands:
   - COMMIT=$(cat ./commit.txt)
+  - echo $COMMIT
   - NAME=$(cat ./NAME.md)
   - BUILD_FOLDER=build_$COMMIT
   - mkdir -p $BUILD_FOLDER
