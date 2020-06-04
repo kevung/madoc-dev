@@ -14,8 +14,8 @@ steps:
   image: pandoc/latex:latest
   commands:
   - cd ./pandoc
-  - bash ./build.sh pdf
-  - bash ./build.sh docx
+  - /bin/bash ./build.sh pdf
+  - /bin/bash ./build.sh docx
   - cd ..
   - ls -ltr ./pandoc
 
