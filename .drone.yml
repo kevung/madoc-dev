@@ -15,7 +15,6 @@ steps:
   commands:
   - cat ./aspell/lang.txt
   - bash ./aspell/check.sh
-  - mkdir -p ./build
 
 - name: pandoc
   image: pandoc/latex:latest
@@ -25,8 +24,8 @@ steps:
   - NAME=$(cat ./NAME.md)
   - echo $NAME
   - cd ./pandoc
-  - 'sh ./build.sh pdf $NAME_$COMMIT'
-  - 'sh ./build.sh docx $NAME_$COMMIT'
+  - 'sh ./build.sh pdf ${NAME}_${COMMIT}'
+  - 'sh ./build.sh docx ${NAME}_${COMMIT}'
   - cd ..
   - ls -ltr ./pandoc
 
