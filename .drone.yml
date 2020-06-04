@@ -8,14 +8,17 @@ steps:
   image: facteurpat/aspell:latest
   commands:
   - bash ./aspell/check.sh
+  - mkdir -p ./build
 
 - name: pandoc
   image: pandoc/latex:latest
   commands:
-  - pandoc -f markdown -t latex README.md -o README.tex
-  - cat README.tex
-  - pandoc -f markdown -t html README.md -o README.html
-  - cat README.html
+  - cd ./pandoc
+  - bash ./build.sh pdf
+  - bash ./build.sh docx
+  - cd ..
+  - ls -ltr ./pandoc
+
 
 - name: test
   image: alpine
