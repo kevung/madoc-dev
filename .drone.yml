@@ -4,8 +4,8 @@ name: default
 
 steps:
 
-- name: aspell-en
-  image: starefossen/aspell:latest
+- name: aspell
+  image: facteurpat/aspell:latest
   commands:
   - ./aspell/check.sh
 
