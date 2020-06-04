@@ -13,9 +13,11 @@ steps:
 - name: pandoc
   image: pandoc/latex:latest
   commands:
+  - which sh
+  - which bash
   - cd ./pandoc
-  - /bin/bash ./build.sh pdf
-  - /bin/bash ./build.sh docx
+  - echo ./build.sh pdf
+  - echo ./build.sh docx
   - cd ..
   - ls -ltr ./pandoc
 
