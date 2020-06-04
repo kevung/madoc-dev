@@ -22,5 +22,19 @@ steps:
   commands:
   - cd ./pandoc
   - 'sh ./build.sh pdf $(cat ../NAME.md)_$(cat ../commit.txt)'
+  - 'sh ./build.sh docx $(cat ../NAME.md)_$(cat ../commit.txt)'
   - cd ..
   - ls -ltr ./pandoc
+
+- name: package
+  image: alpine
+  commands:
+  - COMMIT=$(cat ./commit.md)
+  - NAME=$(cat ./NAME.md)
+  - BUILD_FOLDER=build_$(cat ./commit.txt)
+  - mkdir -p $BUILD_FOLDER
+  - cp mispelled.txt $BUILD_FOLDER
+  - cp pandoc/$NAME_$COMMIT.pdf $BUILD_FOLDER
+  - cp pandoc/$NAME_$COMMIT.docx $BUILD_FOLDER
+  - ls -ltr $BUILD_FOLDER
+
