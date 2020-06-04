@@ -8,6 +8,7 @@ steps:
   image: starefossen/aspell:latest
   commands:
   - 'for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell list); done; > mispelled.txt'
+  - ls -ltr .
   - cat mispelled.txt
 
 - name: pandoc
