@@ -1,0 +1,26 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour
+  - echo monde
+
+- name: pandoc
+  image: pandoc/latex:latest
+  commands:
+  - pandoc -f markdown -t latex README.md -o README.tex
+  - cat README.tex
+  - pandoc -f markdown -t html README.md -o README.html
+  - cat README.html
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour
+  - ls -la .
+
