@@ -7,7 +7,7 @@ steps:
 - name: get_commit
   image: alpine/git
   commands:
-  - alpine/git rev-parse --short HEAD > commit.txt
+  - git rev-parse --short HEAD > commit.txt
   - 'cat commit.txt'
 
 - name: aspell
