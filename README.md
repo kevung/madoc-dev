@@ -1,3 +1,5 @@
+[![Build Status](http://192.168.0.21:3001/api/badges/kevin/madoc/status.svg)](http://192.168.0.21:3001/kevin/madoc)
+
 # Mkdocs préconfigurée
 
 ## Résumé
@@ -24,6 +26,3 @@ python -m mkdocs serve
 La documentation sera visible dans un navigateur à l'adresse
 [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
-## Misc
-
-[![Build Status](http://192.168.0.21:3001/api/badges/kevin/madoc/status.svg)](http://192.168.0.21:3001/kevin/madoc)
