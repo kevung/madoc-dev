@@ -8,7 +8,6 @@ steps:
   image: starefossen/aspell:latest
   commands:
   - ./aspell/check.sh
-  - 'cat mispelled.txt'
 
 - name: pandoc
   image: pandoc/latex:latest
