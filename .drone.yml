@@ -20,9 +20,13 @@ steps:
 - name: pandoc
   image: pandoc/latex:latest
   commands:
+  - COMMIT=$(cat ./commit.txt)
+  - echo $COMMIT
+  - NAME=$(cat ./NAME.md)
+  - echo $NAME
   - cd ./pandoc
-  - 'sh ./build.sh pdf $(cat ../NAME.md)_$(cat ../commit.txt)'
-  - 'sh ./build.sh docx $(cat ../NAME.md)_$(cat ../commit.txt)'
+  - 'sh ./build.sh pdf $NAME_$COMMIT'
+  - 'sh ./build.sh docx $NAME_$COMMIT'
   - cd ..
   - ls -ltr ./pandoc
 
