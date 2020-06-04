@@ -1,9 +1,10 @@
 LANG=$(cat ./aspell/lang.txt)
+echo ${LANG}
 JARGON_COMMON=./aspell/jargon_common.txt
 #jargon pour langue specific
-if [ ${LANG} == "en" ]; then
+if [ ${LANG} == 'en' ]; then
   JARGON_LANG=./aspell/jargon_en.txt 
-elif [ ${LANG} == "fr" ]; then
+elif [ ${LANG} == 'fr' ]; then
   JARGON_LANG=./aspell/jargon_fr.txt
 fi
 # JARGON_LANG=./aspell/jargon_fr.txt
