@@ -4,11 +4,11 @@ name: default
 
 steps:
 
-- name: fr
-  image: alpine
+- name: aspell-en
+  image: starefossen/aspell:latest
   commands:
-  - echo bonjour
-  - echo monde
+  - starefossen/aspell --version
+  - for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell list); done;
 
 - name: pandoc
   image: pandoc/latex:latest
