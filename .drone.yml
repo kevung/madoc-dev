@@ -29,9 +29,9 @@ steps:
 - name: package
   image: alpine
   commands:
-  - COMMIT=$(cat ./commit.md)
+  - COMMIT=$(cat ./commit.txt)
   - NAME=$(cat ./NAME.md)
-  - BUILD_FOLDER=build_$(cat ./commit.txt)
+  - BUILD_FOLDER=build_$COMMIT
   - mkdir -p $BUILD_FOLDER
   - cp mispelled.txt $BUILD_FOLDER
   - cp pandoc/$NAME_$COMMIT.pdf $BUILD_FOLDER
