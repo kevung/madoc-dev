@@ -5,9 +5,9 @@ name: default
 steps:
 
 - name: get_commit
-  image: debian:jessie
+  image: alpine/git
   commands:
-  - git rev-parse --short HEAD > commit.txt
+  - alpine/git rev-parse --short HEAD > commit.txt
   - 'cat commit.txt'
 
 - name: aspell
