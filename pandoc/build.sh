@@ -1,11 +1,14 @@
 CWD=`readlink -f .` #chemin du dossier courant
 ROOT=${CWD}/.. #dossier racine du projet
-COMMIT=`git rev-parse --short HEAD`
-NAME=madoc_${COMMIT} #nom du fichier de sortie
 if [ -z "$1" ]; then
    FORMAT=docx #format par defaut
 else
    FORMAT=$1
+fi
+if [ -z "$2" ]; then
+   NAME=$2 #nom du fichier de sortie
+else
+   NAME=madoc
 fi
 OUTPUT_FILE=${NAME}.${FORMAT}
 OUTPUT="-o ${CWD}/${OUTPUT_FILE}"
