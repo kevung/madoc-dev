@@ -21,8 +21,7 @@ steps:
 - name: pandoc
   image: pandoc/latex:latest
   commands:
-  - pwd
   - cd ./pandoc
-  - 'sh ./build.sh pdf madoc_$(cat /commit.txt)'
+  - 'sh ./build.sh pdf madoc_$(cat ../commit.txt)'
   - cd ..
   - ls -ltr ./pandoc
