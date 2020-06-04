@@ -36,8 +36,8 @@ steps:
   - BUILD_FOLDER=build_$COMMIT
   - echo $BUILD_FOLDER
   - mkdir -p $BUILD_FOLDER
-  - cp mispelled.txt ${BUILD_FOLDER}
-  - cp pandoc/${NAME}_${COMMIT}.pdf ${BUILD_FOLDER}
-  - cp pandoc/${NAME}_${COMMIT}.docx ${BUILD_FOLDER}
+  - cp mispelled.txt $BUILD_FOLDER
+  - cp pandoc/$NAME_$COMMIT.pdf $BUILD_FOLDER
+  - cp pandoc/$NAME_$COMMIT.docx $BUILD_FOLDER
   - ls -ltr ${BUILD_FOLDER}
 
