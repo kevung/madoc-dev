@@ -9,6 +9,6 @@ fi
 cat ${JARGON_LANG} ${JARGON_COMMON} > jargon_tmp.txt
 OUTPUT=mispelled.txt
 rm -f ${OUTPUT} && touch ${OUTPUT};
-for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell -l ${LANG} --mode=markdown --personal=./jargon_tmp.txt list) >> ${OUTPUT}; done;
+for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell -l ${LANG} --personal=./jargon_tmp.txt list) >> ${OUTPUT}; done;
 rm jargon_tmp.txt
 cat mispelled.txt
