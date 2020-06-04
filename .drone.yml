@@ -7,7 +7,7 @@ steps:
 - name: aspell-en
   image: starefossen/aspell:latest
   commands:
-  - 'touch mispelled.txt; for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell list) >> mispelled.txt; done;'
+  - ./aspell/check.sh
   - 'cat mispelled.txt'
 
 - name: pandoc
