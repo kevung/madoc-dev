@@ -7,7 +7,7 @@ steps:
 - name: aspell
   image: facteurpat/aspell:latest
   commands:
-  - ./aspell/check.sh
+  - bash ./aspell/check.sh
 
 - name: pandoc
   image: pandoc/latex:latest
