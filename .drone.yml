@@ -32,10 +32,11 @@ steps:
   - COMMIT=$(cat ./commit.txt)
   - echo $COMMIT
   - NAME=$(cat ./NAME.md)
-  - BUILD_FOLDER=build_$COMMIT
-  - mkdir -p $BUILD_FOLDER
-  - cp mispelled.txt $BUILD_FOLDER
-  - cp pandoc/$NAME_$COMMIT.pdf $BUILD_FOLDER
-  - cp pandoc/$NAME_$COMMIT.docx $BUILD_FOLDER
-  - ls -ltr $BUILD_FOLDER
+  - echo $NAME
+  - BUILD_FOLDER=build_${COMMIT}
+  - mkdir -p ${BUILD_FOLDER}
+  - cp mispelled.txt ${BUILD_FOLDER}
+  - cp pandoc/${NAME}_${COMMIT}.pdf ${BUILD_FOLDER}
+  - cp pandoc/${NAME}_${COMMIT}.docx ${BUILD_FOLDER}
+  - ls -ltr ${BUILD_FOLDER}
 
