@@ -8,6 +8,7 @@ steps:
   image: starefossen/aspell:latest
   commands:
   - ls -la .
+  - aspell --version
 
 - name: pandoc
   image: pandoc/latex:latest
