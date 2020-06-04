@@ -13,12 +13,9 @@ steps:
 - name: pandoc
   image: pandoc/latex:latest
   commands:
-  - apk add --no-cache bash
-  - which sh
-  - which bash
   - cd ./pandoc
-  - echo ./build.sh pdf
-  - echo ./build.sh docx
+  - sh ./build.sh pdf
+  - sh ./build.sh docx
   - cd ..
   - ls -ltr ./pandoc
 
