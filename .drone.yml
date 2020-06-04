@@ -8,7 +8,7 @@ steps:
   image: starefossen/aspell:latest
   commands:
   - 'for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell list); done; > mispelled.txt'
-  - cat mkdocs.yml
+  - 'cat mispelled.txt'
 
 - name: pandoc
   image: pandoc/latex:latest
