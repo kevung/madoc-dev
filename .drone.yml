@@ -13,6 +13,7 @@ steps:
 - name: pandoc
   image: pandoc/latex:latest
   commands:
+  - apk add --no-cache bash
   - which sh
   - which bash
   - cd ./pandoc
