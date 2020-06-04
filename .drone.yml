@@ -7,8 +7,7 @@ steps:
 - name: aspell-en
   image: starefossen/aspell:latest
   commands:
-  - starefossen/aspell --version
-  - for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell list); done;
+  - ls -la .
 
 - name: pandoc
   image: pandoc/latex:latest
