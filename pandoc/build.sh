@@ -6,9 +6,9 @@ else
    FORMAT=$1
 fi
 if [ -z "$2" ]; then
-   NAME=$2 #nom du fichier de sortie
-else
    NAME=madoc
+else
+   NAME=$2 #nom du fichier de sortie
 fi
 OUTPUT_FILE=${NAME}.${FORMAT}
 OUTPUT="-o ${CWD}/${OUTPUT_FILE}"
