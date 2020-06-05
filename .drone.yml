@@ -60,7 +60,7 @@ steps:
       from_secret: gitea_token
     files: /drone/src/build/*
   when:
-    event: tag
+    event: push
 
 - name: deploy-scp-web
   image: appleboy/drone-scp
@@ -71,3 +71,4 @@ steps:
     port: 22
     target: /www/data/site
     source: ./site/*
+
