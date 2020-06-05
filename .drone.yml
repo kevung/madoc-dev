@@ -16,6 +16,11 @@ steps:
   - cat ./aspell/lang.txt
   - bash ./aspell/check.sh
 
+- name: reqflow
+  image: alpine
+  commands:
+  - echo Suivi des exigences avec Reqflow
+
 - name: pandoc
   image: pandoc/latex:latest
   commands:
@@ -27,6 +32,11 @@ steps:
   - 'sh ./build.sh docx $BUILDNAME'
   - cd ..
   - ls -ltr ./pandoc
+
+- name: mkdocs
+  image: alpine
+  commands:
+  - echo Mkdocs building
 
 - name: package
   image: alpine
@@ -40,4 +50,14 @@ steps:
   - cp pandoc/$BUILDNAME.pdf $BUILDFOLDER
   - cp pandoc/$BUILDNAME.docx $BUILDFOLDER
   - ls -ltr $BUILDFOLDER
+
+- name: deploy-web
+  image: alpine
+  commands:
+  - echo deploy web
+
+- name: release-gitea
+  image: alpine
+  commands:
+  - echo release gitea
 
