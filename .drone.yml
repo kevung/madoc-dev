@@ -23,9 +23,11 @@ steps:
   - echo $COMMIT
   - NAME=$(cat ./NAME.md)
   - echo $NAME
+  - BUILDNAME=$NAME-$COMMIT
+  - echo $BUILDNAME
   - cd ./pandoc
-  - 'sh ./build.sh pdf $NAME-$COMMIT'
-  - 'sh ./build.sh docx $NAME-$COMMIT'
+  - 'sh ./build.sh pdf $BUILDNAME'
+  - 'sh ./build.sh docx $BUILDNAME'
   - cd ..
   - ls -ltr ./pandoc
 
@@ -36,11 +38,13 @@ steps:
   - echo $COMMIT
   - NAME=$(cat ./NAME.md)
   - echo $NAME
-  - BUILD_FOLDER=build_$COMMIT
-  - echo $BUILD_FOLDER
-  - mkdir -p $BUILD_FOLDER
-  - cp mispelled.txt $BUILD_FOLDER
-  - cp pandoc/$NAME_$COMMIT.pdf $BUILD_FOLDER
-  - cp pandoc/$NAME_$COMMIT.docx $BUILD_FOLDER
-  - ls -ltr ${BUILD_FOLDER}
+  - BUILDFOLDER=build-$COMMIT
+  - echo $BUILDFOLDER
+  - BUILDNAME=$NAME-$COMMIT
+  - echo $BUILDNAME
+  - mkdir -p $BUILDFOLDER
+  - cp mispelled.txt $BUILDFOLDER
+  - cp pandoc/$BUILDNAME.pdf $BUILDFOLDER
+  - cp pandoc/$BUILDNAME.docx $BUILDFOLDER
+  - ls -ltr $BUILDFOLDER
 
