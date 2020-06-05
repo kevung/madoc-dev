@@ -20,11 +20,8 @@ steps:
   image: pandoc/latex:latest
   commands:
   - COMMIT=$(cat ./commit.txt)
-  - echo $COMMIT
   - NAME=$(cat ./NAME.md)
-  - echo $NAME
   - BUILDNAME=$NAME-$COMMIT
-  - echo $BUILDNAME
   - cd ./pandoc
   - 'sh ./build.sh pdf $BUILDNAME'
   - 'sh ./build.sh docx $BUILDNAME'
@@ -35,13 +32,9 @@ steps:
   image: alpine
   commands:
   - COMMIT=$(cat ./commit.txt)
-  - echo $COMMIT
   - NAME=$(cat ./NAME.md)
-  - echo $NAME
   - BUILDFOLDER=build-$COMMIT
-  - echo $BUILDFOLDER
   - BUILDNAME=$NAME-$COMMIT
-  - echo $BUILDNAME
   - mkdir -p $BUILDFOLDER
   - cp mispelled.txt $BUILDFOLDER
   - cp pandoc/$BUILDNAME.pdf $BUILDFOLDER
