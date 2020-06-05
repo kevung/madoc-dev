@@ -1,7 +1,7 @@
+---
 kind: pipeline
 type: docker
-
-name: default
+name: test
 steps:
 
 - name: get_commit
@@ -21,6 +21,9 @@ steps:
   commands:
   - echo Suivi des exigences avec Reqflow
 
+---
+kind: pipeline
+type: docker
 name: build
 steps:
 
@@ -55,6 +58,9 @@ steps:
   - ls -ltr ./build
 
 
+---
+kind: pipeline
+type: docker
 name: deploy
 steps:
 
