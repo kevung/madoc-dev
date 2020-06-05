@@ -45,11 +45,11 @@ steps:
   - COMMIT=$(cat ./commit.txt)
   - NAME=$(cat ./NAME.md)
   - BUILDNAME=$NAME-$COMMIT
-  - mkdir -p build
-  - cp mispelled.txt build/mispelled-$COMMIT.txt
-  - cp pandoc/$BUILDNAME.pdf build
-  - cp pandoc/$BUILDNAME.docx build
-  - ls -ltr build
+  - mkdir -p ./build
+  - cp mispelled.txt ./build/mispelled-$COMMIT.txt
+  - cp pandoc/$BUILDNAME.pdf ./build
+  - cp pandoc/$BUILDNAME.docx ./build
+  - ls -ltr ./build
 
 - name: gitea_release
   image: plugins/gitea-release
