@@ -53,9 +53,12 @@ steps:
   - ls -ltr $BUILDFOLDER
 
 - name: deploy-web
-  image: alpine
-  commands:
-  - echo deploy web
+  image: appleboy/drone-scp
+  settings:
+    host: 192.168.0.21
+    port: 22
+    target: /www/data/site
+    source: ./site
 
 - name: release-gitea
   image: alpine
