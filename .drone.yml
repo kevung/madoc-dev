@@ -76,6 +76,7 @@ steps:
 
 - name: deploy-scp-web
   image: appleboy/drone-scp
+  failure: ignore
   settings:
     host: 192.168.0.21
     user: nginx
@@ -84,3 +85,5 @@ steps:
     target: /www/data/site
     source: ./site/*
 
+depends_on:
+- build
