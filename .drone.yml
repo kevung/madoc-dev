@@ -4,6 +4,12 @@ type: docker
 name: test
 steps:
 
+- name: get_commit
+  image: alpine/git
+  commands:
+  - git rev-parse --short HEAD > commit.txt
+  - 'cat commit.txt'
+
 - name: aspell
   image: facteurpat/aspell:latest
   commands:
@@ -14,6 +20,27 @@ steps:
   image: alpine
   commands:
   - echo Suivi des exigences avec Reqflow
+  - echo "A mettre en place!" > ./reqflow.txt
+
+- name: pack
+  image: alpine
+  commands:
+  - COMMIT=$(cat ./commit.txt)
+  - NAME=$(cat ./NAME.md)
+  - mkdir -p ./test
+  - cp aspell.txt ./build/aspell-$COMMIT.txt
+  - cp reqflow.txt ./build/reqflow-$COMMIT.txt
+  - ls -ltr ./test
+
+- name: release
+  image: plugins/gitea-release
+  settings:
+    base_url: http://192.168.0.21:3000
+    api_key: 7073fe81a3cc1c60bc01d01ceb24d6bb87f8ea43
+    files: /drone/src/test/*
+    insecure: true
+  when:
+    event: tag
 
 ---
 kind: pipeline
@@ -45,26 +72,18 @@ steps:
   - /usr/local/bin/mkdocs build
   - ls -ltr .
 
-- name: packaging
+- name: pack
   image: alpine
   commands:
   - COMMIT=$(cat ./commit.txt)
   - NAME=$(cat ./NAME.md)
   - BUILDNAME=$NAME-$COMMIT
   - mkdir -p ./build
-  - cp aspell.txt ./build/aspell-$COMMIT.txt
   - cp pandoc/$BUILDNAME.pdf ./build
   - cp pandoc/$BUILDNAME.docx ./build
   - ls -ltr ./build
 
-
----
-kind: pipeline
-type: docker
-name: deploy
-steps:
-
-- name: gitea_release
+- name: release
   image: plugins/gitea-release
   settings:
     base_url: http://192.168.0.21:3000
@@ -73,6 +92,12 @@ steps:
     insecure: true
   when:
     event: tag
+
+---
+kind: pipeline
+type: docker
+name: update-web
+steps:
 
 - name: deploy-scp-web
   image: appleboy/drone-scp
