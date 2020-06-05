@@ -51,15 +51,19 @@ steps:
   - cp pandoc/$BUILDNAME.pdf $BUILDFOLDER
   - cp pandoc/$BUILDNAME.docx $BUILDFOLDER
   - ls -ltr $BUILDFOLDER
-  - zip -r $BUILDNAME.zip $BUILDFOLDER
+  - tar zcvf $BUILDNAME.tgz $BUILDFOLDER
   - ls -ltr .
 
 - name: gitea_release
   image: plugins/gitea-release
+  commands:
+  - COMMIT=$(cat ./commit.txt)
+  - NAME=$(cat ./NAME.md)
+  - BUILDNAME=$NAME-$COMMIT
   settings:
     base_url: http://192.168.0.21:3000
     api_key: 7073fe81a3cc1c60bc01d01ceb24d6bb87f8ea43
-    files: /drone/src/build/*
+    files: /drone/src/$BUILDNAME.tgz
     insecure: true
   when:
     event: tag
