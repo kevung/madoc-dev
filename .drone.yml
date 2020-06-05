@@ -52,7 +52,7 @@ steps:
   - cp pandoc/$BUILDNAME.docx $BUILDFOLDER
   - ls -ltr $BUILDFOLDER
 
-- name: deploy-web
+- name: deploy-scp-web
   image: appleboy/drone-scp
   settings:
     host: 192.168.0.21
