@@ -81,6 +81,8 @@ steps:
   - mkdir -p ./build
   - cp pandoc/$BUILDNAME.pdf ./build
   - cp pandoc/$BUILDNAME.docx ./build
+  - tar zcvf $BUILDNAME-mkdocs.tgz site/
+  - cp -r $BUILDNAME-mkdocs.tgz ./build
   - ls -ltr ./build
 
 - name: release
