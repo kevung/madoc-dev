@@ -36,9 +36,10 @@ steps:
 - name: mkdocs
   image: squidfunk/mkdocs-material:latest
   commands:
-  - echo Mkdocs building
-  - mkdocs-material build
   - ls -ltr .
+  - ls -ltr /
+  - echo Mkdocs building
+  - squidfunk/mkdocs-material build
 
 - name: package
   image: alpine
