@@ -28,8 +28,8 @@ steps:
   - COMMIT=$(cat ./commit.txt)
   - NAME=$(cat ./NAME.md)
   - mkdir -p ./test
-  - cp aspell.txt ./build/aspell-$COMMIT.txt
-  - cp reqflow.txt ./build/reqflow-$COMMIT.txt
+  - cp aspell.txt ./test/aspell-$COMMIT.txt
+  - cp reqflow.txt ./test/reqflow-$COMMIT.txt
   - ls -ltr ./test
 
 - name: release
