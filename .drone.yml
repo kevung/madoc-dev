@@ -34,9 +34,11 @@ steps:
   - ls -ltr ./pandoc
 
 - name: mkdocs
-  image: alpine
+  image: squidfunk/mkdocs-material:latest
   commands:
   - echo Mkdocs building
+  - mkdocs-material build
+  - ls -ltr .
 
 - name: package
   image: alpine
