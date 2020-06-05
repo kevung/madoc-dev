@@ -1,7 +1,7 @@
 kind: pipeline
 type: docker
-name: default
 
+name: default
 steps:
 
 - name: get_commit
@@ -21,7 +21,8 @@ steps:
   commands:
   - echo Suivi des exigences avec Reqflow
 
-build:
+name: build
+steps:
 
 - name: pandoc
   image: pandoc/latex:latest
@@ -54,7 +55,8 @@ build:
   - ls -ltr ./build
 
 
-deploy:
+name: deploy
+steps:
 
 - name: gitea_release
   image: plugins/gitea-release
