@@ -36,9 +36,6 @@ steps:
 - name: mkdocs
   image: squidfunk/mkdocs-material:latest
   commands:
-  - ls -ltr /drone/src
-  - find / -iname "*mkdocs*"
-  - echo Mkdocs building
   - /usr/local/bin/mkdocs build
   - ls -ltr .
 
