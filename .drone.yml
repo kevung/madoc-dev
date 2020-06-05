@@ -37,8 +37,7 @@ steps:
   image: squidfunk/mkdocs-material:latest
   commands:
   - ls -ltr .
-  - ls -ltr /bin
-  - locate mkdocs
+  - ls -ltr /
   - echo Mkdocs building
   - squidfunk/mkdocs-material build
 
