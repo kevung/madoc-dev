@@ -36,11 +36,11 @@ steps:
 - name: mkdocs
   image: squidfunk/mkdocs-material:latest
   commands:
-  - ls -ltr /
-  - ls -ltr /drone
+  - ls -ltr /drone/src
   - find / -iname "*mkdocs*"
   - echo Mkdocs building
-  - squidfunk/mkdocs-material build
+  - /usr/local/bin/mkdocs build
+  - ls -ltr .
 
 - name: package
   image: alpine
