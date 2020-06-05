@@ -51,6 +51,8 @@ steps:
   - cp pandoc/$BUILDNAME.pdf $BUILDFOLDER
   - cp pandoc/$BUILDNAME.docx $BUILDFOLDER
   - ls -ltr $BUILDFOLDER
+  - zip -r $BUILDNAME.zip $BUILDFOLDER
+  - ls -ltr .
 
 - name: gitea_release
   image: plugins/gitea-release
