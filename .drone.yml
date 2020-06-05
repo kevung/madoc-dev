@@ -21,6 +21,8 @@ steps:
   commands:
   - echo Suivi des exigences avec Reqflow
 
+build:
+
 - name: pandoc
   image: pandoc/latex:latest
   commands:
@@ -39,7 +41,7 @@ steps:
   - /usr/local/bin/mkdocs build
   - ls -ltr .
 
-- name: package
+- name: packaging
   image: alpine
   commands:
   - COMMIT=$(cat ./commit.txt)
@@ -50,6 +52,9 @@ steps:
   - cp pandoc/$BUILDNAME.pdf ./build
   - cp pandoc/$BUILDNAME.docx ./build
   - ls -ltr ./build
+
+
+deploy:
 
 - name: gitea_release
   image: plugins/gitea-release
