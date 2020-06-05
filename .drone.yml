@@ -57,7 +57,7 @@ steps:
   settings:
     host: 192.168.0.21
     user: nginx
-    pass: nginx
+    password: nginx
     port: 22
     target: /www/data/site
     source: ./site/*
