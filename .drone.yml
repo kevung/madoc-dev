@@ -44,13 +44,23 @@ steps:
   commands:
   - COMMIT=$(cat ./commit.txt)
   - NAME=$(cat ./NAME.md)
-  - BUILDFOLDER=build-$COMMIT
+  - BUILDFOLDER=build
   - BUILDNAME=$NAME-$COMMIT
   - mkdir -p $BUILDFOLDER
-  - cp mispelled.txt $BUILDFOLDER
+  - cp mispelled.txt $BUILDFOLDER/mispelled-$COMMIT.txt
   - cp pandoc/$BUILDNAME.pdf $BUILDFOLDER
   - cp pandoc/$BUILDNAME.docx $BUILDFOLDER
   - ls -ltr $BUILDFOLDER
+
+- name: gitea_release
+  image: plugins/gitea-release
+  settings:
+    base_url: https://192.168.0.21:3000
+    api_key:
+      from_secret: gitea_token
+    files: /drone/src/build/*
+  when:
+    event: tag
 
 - name: deploy-scp-web
   image: appleboy/drone-scp
@@ -61,9 +71,3 @@ steps:
     port: 22
     target: /www/data/site
     source: ./site/*
-
-- name: release-gitea
-  image: alpine
-  commands:
-  - echo release gitea
-
