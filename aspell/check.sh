@@ -1,4 +1,4 @@
-OUTPUT=mispelled.txt
+OUTPUT=aspell.txt
 LANG=$(cat ./aspell/lang.txt)
 #jargon pour langue specific
 if [ ${LANG} == 'en' ]; then
@@ -11,4 +11,4 @@ cat ${JARGON_LANG} ${JARGON_COMMON} > jargon_tmp.txt
 rm -f ${OUTPUT} && touch ${OUTPUT};
 for f in `find ./docs -iname "*.md"`; do echo $f: $(cat $f | aspell -l ${LANG} --personal=./jargon_tmp.txt list) >> ${OUTPUT}; done;
 rm jargon_tmp.txt
-cat mispelled.txt
+cat aspell.txt

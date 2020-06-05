@@ -46,7 +46,7 @@ steps:
   - NAME=$(cat ./NAME.md)
   - BUILDNAME=$NAME-$COMMIT
   - mkdir -p ./build
-  - cp mispelled.txt ./build/mispelled-$COMMIT.txt
+  - cp aspell.txt ./build/aspell-$COMMIT.txt
   - cp pandoc/$BUILDNAME.pdf ./build
   - cp pandoc/$BUILDNAME.docx ./build
   - ls -ltr ./build
