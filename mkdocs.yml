@@ -8,8 +8,8 @@ theme:
     tabs: true
   palette:
     scheme: default
-    primary: 'blue grey'
-    accent: 'deep orange'
+    primary: 'indigo'
+    accent: 'indigo'
 
 markdown_extensions:
   - footnotes
