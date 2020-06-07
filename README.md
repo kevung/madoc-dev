@@ -1,4 +1,4 @@
-[![Build Status](http://192.168.0.21:3001/api/badges/kevin/madoc/status.svg)](http://192.168.0.21:3001/kevin/madoc)
+[![Build Status](http://192.168.0.21:3001/api/badges/kevin/madoc-dev/status.svg)](http://192.168.0.21:3001/kevin/madoc-dev)
 
 # Mkdocs préconfigurée
 
