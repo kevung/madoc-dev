@@ -115,11 +115,11 @@ steps:
     host:
       - 192.168.0.21
     username:
-      from_secret: unger_user
+      from_secret: nginx_user
     password:
-      from_secret: unger_pass
+      from_secret: nginx_pass
     port: 22
     command_timeout: 4m
-    target: /home/unger/tmp/test/scpdrone
+    target: /www/data/site
     source:
       - ./site/*
