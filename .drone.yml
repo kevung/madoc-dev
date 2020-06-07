@@ -4,7 +4,7 @@ type: docker
 name: assets
 steps:
 
-- name: get_commit
+- name: get_assets
   image: alpine/git
   commands:
   - git clone http://192.168.0.21:3000/kevin/madoc-assets.git assets
@@ -26,8 +26,8 @@ steps:
 - name: aspell
   image: facteurpat/aspell:latest
   commands:
-  - cat ./aspell/lang.txt
-  - bash ./aspell/check.sh
+  - cat ./assets/aspell/lang.txt
+  - bash ./assets/aspell/check.sh
 
 - name: reqflow
   image: alpine
@@ -76,11 +76,11 @@ steps:
   - COMMIT=$(cat ./commit.txt)
   - NAME=$(cat ./NAME.md)
   - BUILDNAME=$NAME-$COMMIT
-  - cd ./pandoc
+  - cd ./assets/pandoc
   - 'sh ./build.sh pdf $BUILDNAME'
   - 'sh ./build.sh docx $BUILDNAME'
-  - cd ..
-  - ls -ltr ./pandoc
+  - cd ../../
+  - ls -ltr ./assets/pandoc
 
 - name: mkdocs
   image: squidfunk/mkdocs-material:latest
@@ -95,8 +95,8 @@ steps:
   - NAME=$(cat ./NAME.md)
   - BUILDNAME=$NAME-$COMMIT
   - mkdir -p ./build
-  - cp pandoc/$BUILDNAME.pdf ./build
-  - cp pandoc/$BUILDNAME.docx ./build
+  - cp ./assets/pandoc/$BUILDNAME.pdf ./build
+  - cp ./assets/pandoc/$BUILDNAME.docx ./build
   - tar zcvf $BUILDNAME-mkdocs.tgz site/
   - cp -r $BUILDNAME-mkdocs.tgz ./build
   - ls -ltr ./build
