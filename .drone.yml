@@ -47,7 +47,7 @@ steps:
     files: /drone/src/test/*
     insecure: true
   when:
-    event: push
+    event: tag
 
 ---
 kind: pipeline
