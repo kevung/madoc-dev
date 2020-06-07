@@ -14,8 +14,6 @@ steps:
   image: alpine/git
   commands:
   - git clone http://192.168.0.21:3000/kevin/madoc-aspell.git aspell
-  - 'ls -ltr'
-  - 'ls -ltr aspell'
 
 - name: aspell
   image: facteurpat/aspell:latest
@@ -86,8 +84,6 @@ steps:
   image: alpine/git
   commands:
   - git clone http://192.168.0.21:3000/kevin/madoc-pandoc.git pandoc
-  - 'ls -ltr'
-  - 'ls -ltr pandoc'
 
 - name: pandoc
   image: pandoc/latex:latest
