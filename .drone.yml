@@ -1,19 +1,6 @@
 ---
 kind: pipeline
 type: docker
-name: assets
-steps:
-
-- name: get_assets
-  image: alpine/git
-  commands:
-  - git clone http://192.168.0.21:3000/kevin/madoc-assets.git assets
-  - 'ls -ltr'
-  - 'ls -ltr assets'
-
----
-kind: pipeline
-type: docker
 name: test
 steps:
 
@@ -23,11 +10,18 @@ steps:
   - git rev-parse --short HEAD > commit.txt
   - 'cat commit.txt'
 
+- name: aspell_assets
+  image: alpine/git
+  commands:
+  - git clone http://192.168.0.21:3000/kevin/madoc-aspell.git aspell
+  - 'ls -ltr'
+  - 'ls -ltr aspell'
+
 - name: aspell
   image: facteurpat/aspell:latest
   commands:
-  - cat ./assets/aspell/lang.txt
-  - bash ./assets/aspell/check.sh
+  - cat ./aspell/lang.txt
+  - bash ./aspell/check.sh
 
 - name: reqflow
   image: alpine
@@ -55,9 +49,6 @@ steps:
   when:
     event: tag
 
-depends_on:
-- assets
-
 ---
 kind: pipeline
 type: docker
@@ -70,17 +61,24 @@ steps:
   - git rev-parse --short HEAD > commit.txt
   - 'cat commit.txt'
 
+- name: pandoc_assets
+  image: alpine/git
+  commands:
+  - git clone http://192.168.0.21:3000/kevin/madoc-pandoc.git pandoc
+  - 'ls -ltr'
+  - 'ls -ltr pandoc'
+
 - name: pandoc
   image: pandoc/latex:latest
   commands:
   - COMMIT=$(cat ./commit.txt)
   - NAME=$(cat ./NAME.md)
   - BUILDNAME=$NAME-$COMMIT
-  - cd ./assets/pandoc
+  - cd ./pandoc
   - 'sh ./build.sh pdf $BUILDNAME'
   - 'sh ./build.sh docx $BUILDNAME'
-  - cd ../../
-  - ls -ltr ./assets/pandoc
+  - cd ../
+  - ls -ltr ./pandoc
 
 - name: mkdocs
   image: squidfunk/mkdocs-material:latest
@@ -95,8 +93,8 @@ steps:
   - NAME=$(cat ./NAME.md)
   - BUILDNAME=$NAME-$COMMIT
   - mkdir -p ./build
-  - cp ./assets/pandoc/$BUILDNAME.pdf ./build
-  - cp ./assets/pandoc/$BUILDNAME.docx ./build
+  - cp ./pandoc/$BUILDNAME.pdf ./build
+  - cp ./pandoc/$BUILDNAME.docx ./build
   - tar zcvf $BUILDNAME-mkdocs.tgz site/
   - cp -r $BUILDNAME-mkdocs.tgz ./build
   - ls -ltr ./build
@@ -110,9 +108,6 @@ steps:
     insecure: true
   when:
     event: tag
-
-depends_on:
-- assets
 
 ---
 kind: pipeline
