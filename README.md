@@ -26,3 +26,6 @@ python -m mkdocs serve
 La documentation sera visible dans un navigateur à l'adresse
 [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
+## fichier `NAME.md`
+
+Pour l'intégration continue qui peut se charger d'exporter madoc au format `docx`, `pdf`... Indiquez dans `NAME.md` le nom que vous souhaitez pour vos fichiers contruits.
