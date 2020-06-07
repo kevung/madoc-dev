@@ -115,16 +115,20 @@ type: docker
 name: update-web
 steps:
 
-- name: deploy-scp-web
+- name: upload
   image: appleboy/drone-scp
-  failure: ignore
   settings:
-    host: 192.168.0.21
-    user: nginx
-    password: nginx
+    host:
+      - 192.168.0.21
+    username:
+      from_secret: BANDBOX_FTP_USERNAME
+    password:
+      from_secret: BANDBOX_FTP_PASSWORD
     port: 22
-    target: /www/data/site
-    source: ./site/*
+    command_timeout: 4m
+    target: ~/tmp/test/scpdrone/
+    source:
+      - ./site/*
 
 depends_on:
 - build
