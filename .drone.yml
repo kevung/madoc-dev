@@ -1,6 +1,19 @@
 ---
 kind: pipeline
 type: docker
+name: assets
+steps:
+
+- name: get_commit
+  image: alpine/git
+  commands:
+  - git clone http://192.168.0.21:3000/kevin/madoc-assets.git assets
+  - 'ls -ltr'
+  - 'ls -ltr assets'
+
+---
+kind: pipeline
+type: docker
 name: test
 steps:
 
@@ -41,6 +54,9 @@ steps:
     insecure: true
   when:
     event: tag
+
+depends_on:
+- assets
 
 ---
 kind: pipeline
@@ -94,6 +110,9 @@ steps:
     insecure: true
   when:
     event: tag
+
+depends_on:
+- assets
 
 ---
 kind: pipeline
