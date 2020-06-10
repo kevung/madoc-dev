@@ -42,8 +42,6 @@ extra_javascript:
 
 plugins:
   - search
-  - git-revision-date-localized:
-      type: date
   - awesome-pages:
       collapse_single_pages: false
   - minify:
