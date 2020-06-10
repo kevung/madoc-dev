@@ -42,6 +42,9 @@ extra_javascript:
 
 plugins:
   - search
+  - bibtex:
+      bib_dir: 'bib'
+      cite_style: "pandoc"
   - awesome-pages:
       collapse_single_pages: false
   - minify:
