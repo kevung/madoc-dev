@@ -45,6 +45,7 @@ plugins:
   - bibtex:
       bib_dir: 'bib'
       cite_style: "pandoc"
+  - img2fig
   - awesome-pages:
       collapse_single_pages: false
   - minify:
