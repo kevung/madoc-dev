@@ -9,7 +9,7 @@ theme:
   palette:
     scheme: default
     primary: 'blue grey'
-    accent: 'blue grey'
+    accent: 'orange'
 
 markdown_extensions:
   - footnotes
