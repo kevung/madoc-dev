@@ -14,7 +14,7 @@ Ce dépot contient une documentation Mkdocs vierge préconfigurée (thème, late
 ## Installation
 
 ```
-pip install -r requirements.txt
+pip install -r requierements.txt
 ```
 
 ## Visualisation de la doc

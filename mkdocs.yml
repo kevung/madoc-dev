@@ -14,8 +14,6 @@ theme:
 markdown_extensions:
   - footnotes
   - admonition
-  - codehilite:
-      guess_lang: false
   - toc:
       permalink: true
   - pymdownx.arithmatex
@@ -31,14 +29,19 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed
   - pymdownx.tilde
 
 extra_javascript:
-  - 'mathjax/MathJax.min.js'
+  - 'library/MathJax.min.js'
+  - 'library/mermaid.min.js'
 
 plugins:
   - search
@@ -48,8 +51,6 @@ plugins:
   - img2fig
   - awesome-pages:
       collapse_single_pages: false
-  - minify:
-      minify_html: true
 
 use_directory_urls: false
 nav:

@@ -4,3 +4,4 @@ mkdocs-minify-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-bibtex
 mkdocs-img2fig-plugin
+mkdocs-mermaid2-plugin
